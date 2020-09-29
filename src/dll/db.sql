@@ -15,6 +15,7 @@ GO
 CREATE TABLE [spacethon].[dbo].[TBL_TEMPERATURA]
 (
     id_temperatura INT NOT NULL IDENTITY(1,1),
+    temperatura INT NOT NULL,
     PRIMARY KEY (id_temperatura)
 )
 
@@ -25,6 +26,7 @@ CREATE TABLE [spacethon].[dbo].[TBL_TEMPERATURA]
 CREATE TABLE [spacethon].[dbo].[TBL_PRESION_ATMOSFERICA ]
 (
     id_presion_atmosferica INT NOT NULL IDENTITY(1,1),
+    presion_atmosferica INT NOT NULL,
     PRIMARY KEY (id_presion_atmosferica)
 )
 
@@ -35,6 +37,7 @@ CREATE TABLE [spacethon].[dbo].[TBL_PRESION_ATMOSFERICA ]
 CREATE TABLE [spacethon].[dbo].[TBL_ALTURA_RIO]
 (
     id_altura_rio INT NOT NULL IDENTITY(1,1),
+    altura_rio INT NOT NULL,
     PRIMARY KEY (id_altura_rio)
 )
 
@@ -45,6 +48,7 @@ CREATE TABLE [spacethon].[dbo].[TBL_ALTURA_RIO]
 CREATE TABLE [spacethon].[dbo].[TBL_CAUDAL]
 (
     id_caudal INT NOT NULL IDENTITY(1,1),
+    caudal INT NOT NULL,
     PRIMARY KEY (id_caudal)
 )
 
@@ -55,6 +59,7 @@ CREATE TABLE [spacethon].[dbo].[TBL_CAUDAL]
 CREATE TABLE [spacethon].[dbo].[TBL_PRECIPITACION]
 (
     id_precipitacion INT NOT NULL IDENTITY(1,1),
+    precipitacion INT NOT NULL,
     PRIMARY KEY (id_precipitacion)
 )
 
@@ -106,10 +111,11 @@ CREATE TABLE [spacethon].[dbo].[TBL_MEDICIONES]
 CREATE TABLE [spacethon].[dbo].[TBL_USUARIOS]
 (
     id_usuario INT NOT NULL IDENTITY(1,1),
-    nombre VARCHAR(45) NULL,
-    apellido VARCHAR(45) NULL,
-    email VARCHAR(45) NULL,
-    rol VARCHAR(45) NULL,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    email VARCHAR(500) NOT NULL UNIQUE,
+    password VARCHAR(MAX) NOT NULL,
+    rol VARCHAR(10) NOT NULL,
     PRIMARY KEY ( id_usuario )
 )
 
@@ -143,5 +149,3 @@ DELETE NO ACTION
     ON
 UPDATE NO ACTION
 )
-
-
