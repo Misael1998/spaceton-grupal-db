@@ -104,6 +104,15 @@ CREATE TABLE [spacethon].[dbo].[TBL_MEDICIONES]
     ON UPDATE NO ACTION
 )
 
+-- -----------------------------------------------------
+-- Table [spacethon].[dbo].TBL_INSTITUCIONES
+-- -----------------------------------------------------
+CREATE TABLE [spacethon].[dbo].[TBL_INSTITUCIONES]
+(
+    id_institucion INT NOT NULL IDENTITY(1,1),
+    nombre VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id_institucion)
+)
 
 -- -----------------------------------------------------
 -- Table [spacethon].[dbo].[TBL_USUARIOS]
@@ -116,7 +125,11 @@ CREATE TABLE [spacethon].[dbo].[TBL_USUARIOS]
     email VARCHAR(500) NOT NULL UNIQUE,
     password VARCHAR(MAX) NOT NULL,
     rol VARCHAR(10) NOT NULL,
-    PRIMARY KEY ( id_usuario )
+    id_institucion INT NOT NULL,
+    PRIMARY KEY ( id_usuario ),
+    CONSTRAINT fk_TBL_USUARIOS_TBL_INSTITUCIONES1
+    FOREIGN KEY (id_institucion)
+    REFERENCES TBL_INSTITUCIONES (id_institucion)
 )
 
 

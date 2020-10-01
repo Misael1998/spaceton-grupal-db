@@ -12,23 +12,53 @@ DROP PROCEDURE  dbo.SP_REGISTER_USER
 GO
 -- Create the stored procedure in the specified schema
 CREATE PROCEDURE  dbo.SP_REGISTER_USER
-    @firstName  VARCHAR(100),
-    @lastName   VARCHAR(100),
-    @email      VARCHAR(500),
-    @password   VARCHAR(MAX),
-    @role       VARCHAR(10),
-    @status     VARCHAR(1) out,
-    @userID     INT = NULL out
+    @firstName      VARCHAR(100),
+    @lastName       VARCHAR(100),
+    @email          VARCHAR(500),
+    @institution    VARCHAR(500),
+    @password       VARCHAR(MAX),
+    @role           VARCHAR(10),
+    @status         VARCHAR(1) out,
+    @userID         INT = NULL out
 -- add more stored procedure parameters here
 AS
 -- body of the stored procedure
 DECLARE @user table (id int)
+DECLARE @institutionId int
+set @institutionId = null
+
+SET @institutionId = (
+    select
+    id_institucion
+from spacethon.dbo.TBL_INSTITUCIONES
+where nombre = @institution
+)
+
+IF @institutionId is null
+BEGIN
+    DECLARE @tmp table(id int)
+    -- Insert rows into table 'spacethon.dbo.TBL_INSTITUCIONES'
+    INSERT INTO spacethon.dbo.TBL_INSTITUCIONES
+        ( -- columns to insert data into
+        [nombre]
+        )
+    OUTPUT inserted.id_institucion into @tmp
+    VALUES
+        ( -- first row: values for the columns in the list above
+            @institution
+    )
+
+    set @institutionId = (select id
+    from @tmp)
+END
+
 -- Insert rows into table 'spacethon.dbo.TBL_USUARIOS'
 INSERT INTO spacethon.dbo.TBL_USUARIOS
     ( -- columns to insert data into
     nombre,
     apellido,
     email,
+    id_institucion,
     password,
     rol
     )
@@ -38,6 +68,7 @@ VALUES
         @firstName,
         @lastName,
         @email,
+        @institutionId,
         @password,
         @role
     )
