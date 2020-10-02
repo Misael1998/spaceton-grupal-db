@@ -79,29 +79,19 @@ CREATE TABLE [spacethon].[dbo].[TBL_MEDICIONES]
     PRIMARY KEY ( id_mediciones ),
     CONSTRAINT  fk_TBL_MEDICIONES_TBL_TEMPERATURA 
     FOREIGN KEY ( id_temperatura )
-    REFERENCES    TBL_TEMPERATURA  ( id_temperatura )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES    TBL_TEMPERATURA  ( id_temperatura ),
     CONSTRAINT  fk_TBL_MEDICIONES_TBL_PRESION_ATMOSFERICA1 
     FOREIGN KEY ( id_presion_atmosferica )
-    REFERENCES    TBL_PRESION_ATMOSFERICA  ( id_presion_atmosferica )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES    TBL_PRESION_ATMOSFERICA  ( id_presion_atmosferica ),
     CONSTRAINT  fk_TBL_MEDICIONES_TBL_ALTURA_RIO1 
     FOREIGN KEY ( id_altura_rio )
-    REFERENCES    TBL_ALTURA_RIO  ( id_altura_rio )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES    TBL_ALTURA_RIO  ( id_altura_rio ),
     CONSTRAINT  fk_TBL_MEDICIONES_TBL_CAUDAL1 
     FOREIGN KEY ( id_caudal )
-    REFERENCES    TBL_CAUDAL  ( id_caudal )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES    TBL_CAUDAL  ( id_caudal ),
     CONSTRAINT  fk_TBL_MEDICIONES_TBL_PRECIPITACION1 
     FOREIGN KEY ( id_precipitacion )
     REFERENCES    TBL_PRECIPITACION  ( id_precipitacion )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
 )
 
 -- -----------------------------------------------------
@@ -147,18 +137,10 @@ CREATE TABLE [spacethon].[dbo].[TBL_LOGS]
     FOREIGN KEY
 ( id_mediciones )
     REFERENCES    TBL_MEDICIONES
-( id_mediciones )
-    ON
-DELETE NO ACTION
-    ON
-UPDATE NO ACTION,
+( id_mediciones ),
     CONSTRAINT  fk_TBL_LOGS_TBL_USUARIOS1
 FOREIGN KEY
 ( id_usuarios )
     REFERENCES    TBL_USUARIOS
 ( id_usuario )
-    ON
-DELETE NO ACTION
-    ON
-UPDATE NO ACTION
 )
