@@ -15,7 +15,7 @@ GO
 CREATE TABLE [spacethon].[dbo].[TBL_TEMPERATURA]
 (
     id_temperatura INT NOT NULL IDENTITY(1,1),
-    temperatura INT NOT NULL,
+    temperatura FLOAT NOT NULL,
     PRIMARY KEY (id_temperatura)
 )
 
@@ -26,7 +26,7 @@ CREATE TABLE [spacethon].[dbo].[TBL_TEMPERATURA]
 CREATE TABLE [spacethon].[dbo].[TBL_PRESION_ATMOSFERICA ]
 (
     id_presion_atmosferica INT NOT NULL IDENTITY(1,1),
-    presion_atmosferica INT NOT NULL,
+    presion_atmosferica FLOAT NOT NULL,
     PRIMARY KEY (id_presion_atmosferica)
 )
 
@@ -37,7 +37,7 @@ CREATE TABLE [spacethon].[dbo].[TBL_PRESION_ATMOSFERICA ]
 CREATE TABLE [spacethon].[dbo].[TBL_ALTURA_RIO]
 (
     id_altura_rio INT NOT NULL IDENTITY(1,1),
-    altura_rio INT NOT NULL,
+    altura_rio FLOAT NOT NULL,
     PRIMARY KEY (id_altura_rio)
 )
 
@@ -48,7 +48,7 @@ CREATE TABLE [spacethon].[dbo].[TBL_ALTURA_RIO]
 CREATE TABLE [spacethon].[dbo].[TBL_CAUDAL]
 (
     id_caudal INT NOT NULL IDENTITY(1,1),
-    caudal INT NOT NULL,
+    caudal FLOAT NOT NULL,
     PRIMARY KEY (id_caudal)
 )
 
@@ -59,7 +59,7 @@ CREATE TABLE [spacethon].[dbo].[TBL_CAUDAL]
 CREATE TABLE [spacethon].[dbo].[TBL_PRECIPITACION]
 (
     id_precipitacion INT NOT NULL IDENTITY(1,1),
-    precipitacion INT NOT NULL,
+    precipitacion FLOAT NOT NULL,
     PRIMARY KEY (id_precipitacion)
 )
 
